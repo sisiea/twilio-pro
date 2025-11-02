@@ -14,6 +14,7 @@ export async function POST(req: NextRequest) {
       from: process.env.TWILIO_PHONE_NUMBER!,
       twiml: `<Response><Say>你好，这是一通来自 Jack 的测试呼叫。</Say></Response>`,
     });
+    console.log('📞 Call created:', call.sid, call.status);
 
     return NextResponse.json({ success: true, sid: call.sid });
   } catch (err: any) {
